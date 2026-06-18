@@ -1,0 +1,328 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#101827;
+    color:white;
+
+    font-family:'Bebas Neue', sans-serif;
+
+    min-height:100vh;
+}
+
+.wrap{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.header{
+    background:linear-gradient(
+        135deg,
+        #182547,
+        #121b36
+    );
+
+    border-radius:18px;
+
+    padding:25px 30px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.eyebrow{
+    color:#e5a93d;
+    font-size:18px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.header h1{
+    margin-top:8px;
+
+    font-family:'VT323', monospace;
+
+    font-size:4rem;
+    line-height:1;
+
+    color:#f0b44c;
+}
+
+.back-link{
+    text-decoration:none;
+    color:#cfcfcf;
+
+    font-family:'Bebas Neue', sans-serif;
+    font-size:15px;
+
+    transition:.2s;
+}
+
+.back-link:hover{
+    color:white;
+}
+
+.state{
+    display:none;
+}
+
+.state.active{
+    display:block;
+}
+
+#state-loading{
+    background:#1b2646;
+    padding:18px;
+    border-radius:14px;
+    text-align:center;
+    font-family:sans-serif;
+}
+
+#state-empty{
+    text-align:center;
+    background:#1b2646;
+    padding:50px;
+    border-radius:18px;
+}
+
+.empty-icon{
+    width:80px;
+    height:80px;
+    margin-bottom:20px;
+}
+
+.empty-title{
+    font-size:2rem;
+}
+
+.empty-sub{
+    margin-top:10px;
+    color:#b8bfd0;
+    font-family:sans-serif;
+}
+
+.empty-path{
+    display:inline-block;
+    margin-top:20px;
+
+    background:#0f1529;
+    padding:10px 15px;
+    border-radius:10px;
+
+    font-family:monospace;
+}
+
+#state-viewer{
+    background:#18213d;
+
+    border-radius:20px;
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.viewer-toolbar{
+    background:#e9e2d4;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 20px;
+}
+
+.file-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:#24304f;
+    font-family:sans-serif;
+    font-weight:600;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#e0a33c;
+}
+
+.btn-download{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    text-decoration:none;
+
+    background:#e0a33c;
+    color:#1d2438;
+
+    padding:10px 18px;
+    border-radius:10px;
+
+    font-family:sans-serif;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.btn-download:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(224,163,60,.3);
+}
+
+.pdf-frame{
+    width:100%;
+    height:850px;
+
+    border:none;
+    background:white;
+}
+
+.empty-note{
+    margin-top:20px;
+
+    text-align:center;
+
+    color:#97a2ba;
+    font-size:14px;
+
+    font-family:sans-serif;
+}
+
+@media (max-width:768px){
+
+    .wrap{
+        padding:15px;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .header h1{
+        font-size:2.6rem;
+    }
+
+    .viewer-toolbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .btn-download{
+        width:100%;
+        justify-content:center;
+    }
+
+    .pdf-frame{
+        height:600px;
+    }
+}
+
+.pdf-frame{
+
+    background:#0f172a;
+
+    padding:20px;
+
+    min-height:80vh;
+}
+
+.pdf-controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.pdf-controls button{
+
+    border:none;
+
+    background:#e0a33c;
+
+    color:#18213d;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.pdf-controls button:hover{
+
+    transform:translateY(-2px);
+}
+
+#pdf-pages{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.pdf-page{
+
+    width:min(100%,900px);
+
+    height:auto;
+
+    background:white;
+
+    border-radius:14px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+}
+
+@media (max-width:768px){
+
+    .pdf-frame{
+
+        padding:10px;
+    }
+
+    .pdf-page{
+
+        width:100%;
+    }
+
+    .pdf-controls{
+
+        position:sticky;
+
+        top:10px;
+
+        z-index:10;
+    }
+}
