@@ -1,4 +1,4 @@
-:root {
+ :root {
     --ink: #1B2238;
     --paper: #F5F1E8;
     --paper-dim: #EAE4D6;
@@ -39,7 +39,7 @@
   }
 
   .eyebrow {
-    font-family: Bebas Neue, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 12px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -54,17 +54,46 @@
     letter-spacing: -0.01em;
   }
 
-  .back-link{
-    color:white;
-    text-decoration:none;
-    white-space:nowrap;
-    font-family: sans-serif;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    font-size:10px;
-}
+  .back-link {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--paper);
+    opacity: 0.6;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
   .back-link:hover { opacity: 1; border-color: var(--paper); }
 
+  .btn-download-below {
+    margin-bottom: 24px;
+  }
+
+  .btn-download {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--ink);
+    border: none;
+    border-radius: 6px;
+    padding: 9px 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+  .btn-download:hover { transform: translateY(-1px); }
+
+  .btn-download svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
 
   .legend {
     display: flex;
@@ -103,7 +132,7 @@
 
   .slot-name {
     font-size: 12.5px;
-    font-family: Bebas Neue;
+    font-weight: 600;
     color: var(--text-dark);
     line-height: 1.25;
   }
@@ -113,7 +142,6 @@
     color: var(--text-muted);
   }
 
- 
   .schedule-card {
     background: var(--paper);
     border-radius: 10px;
@@ -223,7 +251,6 @@
     padding: 6px 4px;
     font-style: italic;
   }
-
 
   @media (max-width: 900px) {
     h1 { font-size: 28px; }
