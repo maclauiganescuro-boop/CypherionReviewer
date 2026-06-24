@@ -44,7 +44,9 @@
         Download
       </a>
     </div>
-    <iframe class="pdf-frame" id="pdf-frame" title="PDF reviewer preview"></iframe>
+    <object class="pdf-frame" id="pdf-frame" type="application/pdf">
+  <p id="pdf-fallback" style="display:none;"></p>
+</object>
   </div>
 
   <p class="empty-note">The file automatically updates whenever a new topic is taught.<br>-Cypherion:)</p>
@@ -53,44 +55,45 @@
 
 <script>
   const subjectNames = {
-    'data-structure-and-algorithms': 'Data Structure and Algorithms',
-    'networking-1': 'Networking 1',
-    'it-elective-1': 'IT Elective 1',
-    'it-elective-2': 'IT Elective 2',
-    'information-management': 'Information Management',
-    'computer-maintenance-and-troubleshooting': 'Computer Maintenance and Troubleshooting'
-  };
+  'data-structure-and-algorithms': 'Data Structure and Algorithms',
+  'networking-1': 'Networking 1',
+  'it-elective-1': 'IT Elective 1',
+  'it-elective-2': 'IT Elective 2',
+  'information-management': 'Information Management',
+  'computer-maintenance-and-troubleshooting': 'Computer Maintenance and Troubleshooting'
+};
 
-  const params = new URLSearchParams(window.location.search);
-  const subjectKey = params.get('subject') || '';
-  const subjectTitle = subjectNames[subjectKey] || (subjectKey ? subjectKey : 'Subject');
-  const pdfPath = 'reviewers/' + (subjectKey || 'reviewer') + '.pdf';
+const params = new URLSearchParams(window.location.search);
+const subjectKey = params.get('subject') || '';
+const subjectTitle = subjectNames[subjectKey] || (subjectKey ? subjectKey : 'Subject');
+const pdfPath = 'reviewers/' + (subjectKey || 'reviewer') + '.pdf';
 
-  document.getElementById('subject-title').textContent = subjectTitle;
-  document.getElementById('expected-path').textContent = pdfPath;
+document.getElementById('subject-title').textContent = subjectTitle;
+document.getElementById('expected-path').textContent = pdfPath;
 
-  const stateLoading = document.getElementById('state-loading');
-  const stateEmpty = document.getElementById('state-empty');
-  const stateViewer = document.getElementById('state-viewer');
+const stateLoading = document.getElementById('state-loading');
+const stateEmpty = document.getElementById('state-empty');
+const stateViewer = document.getElementById('state-viewer');
 
-  function showState(el) {
-    [stateLoading, stateEmpty, stateViewer].forEach(s => s.classList.remove('active'));
-    el.classList.add('active');
-  }
+function showState(el) {
+  [stateLoading, stateEmpty, stateViewer].forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
 
-  fetch(pdfPath, { method: 'HEAD' })
-    .then(res => {
-      if (res.ok) {
-        document.getElementById('pdf-frame').src = pdfPath;
-        document.getElementById('file-name').textContent = subjectTitle + ' Reviewer.pdf';
-        document.getElementById('download-btn').href = pdfPath;
-        document.getElementById('download-btn').download = subjectKey + '.pdf';
-        showState(stateViewer);
-      } else {
-        showState(stateEmpty);
-      }
-    })
-    .catch(() => showState(stateEmpty));
+fetch(pdfPath, { method: 'HEAD' })
+  .then(res => {
+    if (res.ok) {
+      const frame = document.getElementById('pdf-frame');
+      frame.data = pdfPath + '#toolbar=0';
+      document.getElementById('file-name').textContent = subjectTitle + ' Reviewer.pdf';
+      document.getElementById('download-btn').href = pdfPath;
+      document.getElementById('download-btn').download = subjectKey + '.pdf';
+      showState(stateViewer);
+    } else {
+      showState(stateEmpty);
+    }
+  })
+  .catch(() => showState(stateEmpty));
 </script>
 
 </body>
