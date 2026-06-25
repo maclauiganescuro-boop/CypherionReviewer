@@ -39,7 +39,7 @@ body {
 
 .eyebrow {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -48,7 +48,6 @@ body {
 
 h1 {
   font-family: 'VT323', monospace;
-  font-size: 48px;
   font-weight: 400;
   line-height: 1;
   color: var(--paper);
